@@ -1,8 +1,18 @@
 import { Component } from '@angular/core';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
-import {MatInput} from "@angular/material/input";
-import {MatButton} from "@angular/material/button";
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent, MatDialogModule,
+  MatDialogRef,
+  MatDialogTitle
+} from "@angular/material/dialog";
+import {MatInput, MatInputModule} from "@angular/material/input";
+import {MatButton, MatButtonModule} from "@angular/material/button";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {AuthenApiService} from "../../services/authen-api.service";
+import {NgIf} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-dialog',
@@ -13,13 +23,55 @@ import {MatButton} from "@angular/material/button";
     MatDialogContent,
     MatDialogTitle,
     MatInput,
+    MatInputModule,
     MatButton,
+    MatButtonModule,
+    MatDialogModule,
     MatDialogClose,
-    MatDialogActions
+    MatDialogActions,
+    NgIf,
+    ReactiveFormsModule
   ],
   templateUrl: './login-dialog.component.html',
   styleUrl: './login-dialog.component.css'
 })
 export class LoginDialogComponent {
+  loginForm: FormGroup;
+  errorMessage: string | null = null;
 
+
+  constructor(
+    private fb: FormBuilder,
+    private authenService: AuthenApiService,
+    private dialogRef: MatDialogRef<LoginDialogComponent>,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
+
+  onLogin(): void {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.authenService.login(email, password).subscribe(
+        (user) => {
+          console.log('Usuario autenticado:', user);
+          this.router.navigate(['/home']);
+          this.dialogRef.close();
+          //this.router.navigate(['/home']);
+
+        },
+        (error) => {
+          this.errorMessage = error;
+        }
+      );
+    }
+  }
+
+  // Función para cerrar el diálogo
+  onCancel(): void {
+    this.dialogRef.close();
+  }
 }
