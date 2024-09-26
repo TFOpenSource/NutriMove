@@ -15,6 +15,8 @@ import {MatCard, MatCardContent} from "@angular/material/card";
 import {Food} from "../model/food.entity";
 import {FoodService} from "../services/food.service";
 import {MatButton} from "@angular/material/button";
+import {ToolbarComponent} from "../../../../../../public/toolbar/toolbar.component";
+import {RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-mydiet-page',
@@ -36,7 +38,9 @@ import {MatButton} from "@angular/material/button";
     MatCard,
     MatCardContent,
     MatRow,
-    MatButton
+    MatButton,
+    ToolbarComponent,
+    RouterOutlet
   ],
   templateUrl: './mydiet-page.component.html',
   styleUrl: './mydiet-page.component.css'
