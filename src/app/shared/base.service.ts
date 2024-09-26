@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,18 @@ import { Observable } from 'rxjs';
 export class BaseService<T> {
   private apiUrl = 'http://localhost:3000';
 
+  protected basePath: string = `${environment.serverBasePath}`;
+
+  protected resourceEndPoint: string = '/resources';
+
+  protected resourcePath(): string {
+    return `${this.basePath}${this.resourceEndPoint}`;
+  }
   constructor(private http: HttpClient) {}
+
+  getAll2(): Observable<T[]> {
+    return this.http.get<T[]>(this.resourcePath());  // Usar resourcePath en lugar de pasar el endpoint
+  }
 
   getAll(endpoint: string): Observable<T[]> {
     return this.http.get<T[]>(`${this.apiUrl}/${endpoint}`);

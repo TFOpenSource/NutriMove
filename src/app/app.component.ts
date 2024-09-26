@@ -18,6 +18,7 @@ export class AppComponent {
   options = [
     {path: 'home', title: 'home'},
     {path: 'access', title: 'access'},
-    {path: 'home/mydiet', title: 'mydiet'}
+    {path: 'home/mydiet', title: 'mydiet'},
+    {path: 'home/food', title: 'foods'}
   ]
 }
