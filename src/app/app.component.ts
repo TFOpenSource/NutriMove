@@ -16,6 +16,7 @@ export class AppComponent {
   title = 'opensource';
   options = [
     {path: 'home', title: 'home'},
+    { path: '/launch/food', title: 'Foods' },
     {path: 'access', title: 'access'}
   ]
 }
