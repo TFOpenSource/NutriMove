@@ -1,21 +1,40 @@
 
-<mat-toolbar color="primary" class="toolbar">
-  <div class="logo-container">
-    <img src="" alt="NutriMove Logo" class="logo" />
-  </div>
-  <span class="spacer"></span>
-  <div>
-    <button mat-button [routerLink]="['/home']" routerLinkActive="active">Home</button>
-    <button mat-button [routerLink]="['/mi-dieta']" routerLinkActive="active">Mi Dieta</button>
-    <button mat-button [routerLink]="['/recomendaciones']" routerLinkActive="active">Recomendaciones</button>
-    <button mat-button [routerLink]="['/actividades']" routerLinkActive="active">Actividades</button>
-    <button mat-button [routerLink]="['/comunidad']" routerLinkActive="active">Comunidad</button>
-    <button mat-button [routerLink]="['/perfil']" routerLinkActive="active">Perfil</button>
-  </div>
-</mat-toolbar>
+<app-toolbar></app-toolbar>
 
 <div class="content">
-  <h1>Home works</h1>
+  <div class="dashboard">
+    <h1>Bienvenido de nuevo!</h1>
+
+    <div class="stats-container">
+      <div class="stat">
+        <p>Meta de hidratación diaria:</p>
+        <div class="circle">
+          <div class="percent blue">
+            <span>35%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat">
+        <p>Estadísticas de objetivos:</p>
+        <div class="circle">
+          <div class="percent green">
+            <span>60%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat">
+        <p>Calorías diarias:</p>
+        <div class="circle">
+          <div class="percent orange">
+            <span>700 kcal.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <router-outlet></router-outlet>

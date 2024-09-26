@@ -1,0 +1,57 @@
+<app-toolbar></app-toolbar>
+
+<div class="table-wrapper">
+  <h1>Mi dieta</h1>
+
+  <!-- Botón de Agregar Alimento -->
+  <div class="button-container">
+    <button mat-flat-button color="accent" (click)="addFood()">Agregar Alimento</button>
+  </div>
+
+  <!-- Data table -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table" matSort>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Nombre</th>
+      <td mat-cell *matCellDef="let food">{{food.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="calories">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by calories">Calorías</th>
+      <td mat-cell *matCellDef="let food">{{food.calories}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="proteins">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by proteins">Proteínas</th>
+      <td mat-cell *matCellDef="let food">{{food.proteins}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="carbohydrates">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by carbohydrates">Carbohidratos</th>
+      <td mat-cell *matCellDef="let food">{{food.carbohydrates}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fats">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fats">Grasas</th>
+      <td mat-cell *matCellDef="let food">{{food.fats}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>
+
+<!-- Estadísticas últimas 24 horas en una card más pequeño y centrado -->
+<div class="card-container">
+  <mat-card class="stats-card">
+    <h4>Estadísticas las últimas 24 horas:</h4>
+    <mat-card-content>
+      <p>Calorías: </p>
+      <p>Proteínas: </p>
+      <p>Carbohidratos: </p>
+      <p>Grasas: </p>
+    </mat-card-content>
+  </mat-card>
+</div>

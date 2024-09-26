@@ -3,6 +3,7 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {MatButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {LoginDialogComponent} from "../../components/login-dialog/login-dialog.component";
+import {RegisterDialogComponent} from "../../components/register-dialog/register-dialog.component";
 
 @Component({
   selector: 'app-access-page',
@@ -19,7 +20,10 @@ export class AccessPageComponent {
 
   openLoginDialog(): void {
     this.dialog.open(LoginDialogComponent, {
-      width: '400px'
-    });
+      width: '400px'});
+  }
+  openRegDialog(): void {
+    this.dialog.open(RegisterDialogComponent, {
+      width: '900px', height:'600px'});
   }
 }
