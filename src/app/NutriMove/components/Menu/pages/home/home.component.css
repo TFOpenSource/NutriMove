@@ -46,7 +46,7 @@
 
 .blue {
   background: conic-gradient(blue 0% 35%, #f3f3f3 35% 100%);
-  border-radius: 50%; /* Garantiza que también los gradientes se mantengan circulares */
+  border-radius: 50%;
 }
 
 .green {
