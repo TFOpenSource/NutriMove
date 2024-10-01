@@ -1,0 +1,63 @@
+/* Estilo general de la página */
+.profile-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px; /* Tamaño del encabezado */
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Contenedor principal del perfil */
+.profile-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-details, .profile-objective {
+  padding: 10px;
+  width: 45%; /* Cada columna ocupa 45% del contenedor */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+.section-title {
+  font-size: 18px; /* Ajustar tamaño para "Privacidad" y "Objetivo" */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.mat-radio-button {
+  margin-right: 10px;
+}
+
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 16px;
+}
