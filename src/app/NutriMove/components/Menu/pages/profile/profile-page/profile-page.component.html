@@ -22,7 +22,7 @@
       </div>
 
       <div class="privacy-group">
-        <p class="section-title">Privacidad:</p> <!-- Ajustar el tamaño para consistencia -->
+        <p class="section-title">Privacidad:</p>
         <mat-radio-group [(ngModel)]="user.privacy" disabled>
           <mat-radio-button value="Privado">Privado</mat-radio-button>
           <mat-radio-button value="Público">Público</mat-radio-button>
@@ -32,7 +32,7 @@
 
     <!-- Columna derecha para los objetivos -->
     <div class="profile-objective">
-      <p class="section-title">Objetivo:</p> <!-- Ajustar el tamaño para consistencia -->
+      <p class="section-title">Objetivo:</p>
       <mat-radio-group [(ngModel)]="user.goal" disabled>
         <mat-radio-button value="Bajar De peso">Bajar De peso</mat-radio-button><br />
         <mat-radio-button value="Ganar Masa Muscular">Ganar Masa Muscular</mat-radio-button><br />
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <!-- Botón para editar perfil -->
+
   <div class="button-group">
     <button mat-raised-button color="primary" (click)="editProfile()">Editar</button>
   </div>

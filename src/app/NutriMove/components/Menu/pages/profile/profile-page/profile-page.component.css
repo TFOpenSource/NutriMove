@@ -9,12 +9,12 @@
 }
 
 h2 {
-  font-size: 24px; /* Tamaño del encabezado */
+  font-size: 24px;
   margin-bottom: 20px;
   color: #333;
 }
 
-/* Contenedor principal del perfil */
+
 .profile-content {
   display: flex;
   justify-content: space-between;
@@ -22,7 +22,7 @@ h2 {
 
 .profile-details, .profile-objective {
   padding: 10px;
-  width: 45%; /* Cada columna ocupa el 45% del contenedor */
+  width: 45%;
 }
 
 .form-group {
@@ -43,7 +43,7 @@ input {
 }
 
 .section-title {
-  font-size: 18px; /* Ajustar tamaño para "Privacidad" y "Objetivo" */
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
