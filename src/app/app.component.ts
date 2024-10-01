@@ -19,6 +19,8 @@ export class AppComponent {
     {path: 'home', title: 'home'},
     {path: 'access', title: 'access'},
     {path: 'home/mydiet', title: 'mydiet'},
-    {path: 'home/food', title: 'foods'}
+    {path: 'home/food', title: 'foods'},
+    {path: 'profile', title: 'profile'},
+    {path: 'profile/edit', title: 'edit'}
   ]
 }

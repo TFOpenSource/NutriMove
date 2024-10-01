@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Estilo general de la página */
 .profile-container {
   margin: 20px;
   padding: 20px;
@@ -9,12 +9,12 @@
 }
 
 h2 {
+  font-size: 24px; /* Tamaño del encabezado */
   margin-bottom: 20px;
-  font-size: 24px;
   color: #333;
 }
 
-/* Contenedor principal de perfil */
+/* Contenedor principal del perfil */
 .profile-content {
   display: flex;
   justify-content: space-between;
@@ -22,7 +22,7 @@ h2 {
 
 .profile-details, .profile-objective {
   padding: 10px;
-  width: 45%;
+  width: 45%; /* Cada columna ocupa el 45% del contenedor */
 }
 
 .form-group {
@@ -42,26 +42,22 @@ input {
   border: 1px solid #cccccc;
 }
 
-.privacy-group {
-  margin-top: 15px;
+.section-title {
+  font-size: 18px; /* Ajustar tamaño para "Privacidad" y "Objetivo" */
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .mat-radio-button {
   margin-right: 10px;
 }
 
-.edit-button {
+.button-group {
   margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px 20px;
-  background-color: #444;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 5px;
+  display: flex;
+  gap: 10px;
 }
 
-.edit-button:hover {
-  background-color: #333;
+button {
+  padding: 8px 16px;
 }
