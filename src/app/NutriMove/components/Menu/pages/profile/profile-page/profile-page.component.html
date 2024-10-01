@@ -1,0 +1,45 @@
+<app-toolbar></app-toolbar> <!-- Barra de navegación en la parte superior -->
+
+<div class="profile-container">
+  <h2>Detalles de Perfil:</h2>
+
+  <div class="profile-content">
+    <!-- Columna izquierda con detalles del perfil -->
+    <div class="profile-details">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input id="name" type="text" [(ngModel)]="user.name" placeholder="Nombre" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Apellido:</label>
+        <input id="lastName" type="text" [(ngModel)]="user.lastName" placeholder="Apellido" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo:</label>
+        <input id="email" type="email" [(ngModel)]="user.email" placeholder="Correo" class="form-control" />
+      </div>
+
+      <div class="privacy-group">
+        <p>Privacidad:</p>
+        <mat-radio-group [(ngModel)]="user.privacy">
+          <mat-radio-button value="Privado">Privado</mat-radio-button>
+          <mat-radio-button value="Público">Público</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <!-- Columna derecha con los objetivos -->
+    <div class="profile-objective">
+      <h3>Objetivo:</h3>
+      <mat-radio-group [(ngModel)]="user.goal">
+        <mat-radio-button value="Bajar De peso">Bajar De peso</mat-radio-button><br />
+        <mat-radio-button value="Ganar Masa Muscular">Ganar Masa Muscular</mat-radio-button><br />
+        <mat-radio-button value="Solo estar en forma">Solo estar en forma</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" class="edit-button" (click)="editProfile()">Editar</button>
+</div>

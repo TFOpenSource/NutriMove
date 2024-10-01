@@ -1,0 +1,67 @@
+/* Estilos generales */
+.profile-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Contenedor principal de perfil */
+.profile-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-details, .profile-objective {
+  padding: 10px;
+  width: 45%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+.privacy-group {
+  margin-top: 15px;
+}
+
+.mat-radio-button {
+  margin-right: 10px;
+}
+
+.edit-button {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 20px;
+  background-color: #444;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.edit-button:hover {
+  background-color: #333;
+}

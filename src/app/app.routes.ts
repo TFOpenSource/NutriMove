@@ -4,6 +4,7 @@ import {AccessPageComponent} from "./NutriMove/components/Access/pages/access-pa
 import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
 import {FoodManagementComponent} from "./NutriMove/components/launch/pages/food-management/food-management.component";
 import {MydietPageComponent} from "./NutriMove/components/Menu/pages/mydiet/mydiet-page/mydiet-page.component";
+import {ProfilePageComponent} from "./NutriMove/components/Menu/pages/profile/profile-page/profile-page.component";
 
 
 export const routes: Routes = [
@@ -12,6 +13,7 @@ export const routes: Routes = [
 
   {path: 'home/food', component: FoodManagementComponent},
   {path:'home/mydiet', component: MydietPageComponent},
+  {path: 'home/profile', component: ProfilePageComponent},
 
   { path: '', redirectTo: '/access', pathMatch: 'full' },
   {path: '**', component: PageNotFoundComponent },
