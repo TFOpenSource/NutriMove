@@ -2,17 +2,13 @@
 
 <div class="table-wrapper">
   <h1>Mi dieta</h1>
-
-  <!-- Botón de Agregar Alimento -->
   <div class="button-container">
-    <button mat-flat-button color="accent" (click)="addFood()">Agregar Alimento</button>
+    <button mat-flat-button color="accent" (click)="toggleCreateForm()" >Agregar Alimento</button>
   </div>
-
-  <!-- Data table -->
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table" matSort>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">Nombre</th>
+    <ng-container matColumnDef="name" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name" >Nombre</th>
       <td mat-cell *matCellDef="let food">{{food.name}}</td>
     </ng-container>
 
@@ -37,21 +33,25 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
+    <tr *matRowDef="let row; columns: columnsToDisplay;"
+        [ngClass]="{ 'editable-row':foodData && foodData.id === row.id }" mat-row>
+    </tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>
-
-<!-- Estadísticas últimas 24 horas en una card más pequeño y centrado -->
+  <div *ngIf="showCreateForm" class="form-overlay">
+    <app-food-create (foodAddRequested)="onFoodAdded($event)" (cancelRequested)="onCancel()"></app-food-create>
+  </div>
 <div class="card-container">
   <mat-card class="stats-card">
     <h4>Estadísticas las últimas 24 horas:</h4>
     <mat-card-content>
-      <p>Calorías: </p>
-      <p>Proteínas: </p>
-      <p>Carbohidratos: </p>
-      <p>Grasas: </p>
+      <p>Calorías: {{totalStats.calories}}</p>
+      <p>Proteínas: {{totalStats.proteins}}</p>
+      <p>Carbohidratos: {{totalStats.carbohydrates}}</p>
+      <p>Grasas: {{totalStats.fats}}</p>
     </mat-card-content>
   </mat-card>
+
 </div>

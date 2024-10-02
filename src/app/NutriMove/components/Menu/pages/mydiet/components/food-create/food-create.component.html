@@ -1,0 +1,34 @@
+<mat-card class="food-form-card">
+  <h2>Agregar Nuevo Alimento</h2>
+  <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Calorías</mat-label>
+      <input matInput formControlName="calories" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Proteínas</mat-label>
+      <input matInput formControlName="proteins" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Carbohidratos</mat-label>
+      <input matInput formControlName="carbohydrates" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Grasas</mat-label>
+      <input matInput formControlName="fats" type="number">
+    </mat-form-field>
+
+    <div class="form-buttons">
+      <button mat-flat-button color="primary" type="submit" [disabled]="!foodForm.valid">Agregar</button>
+      <button mat-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</mat-card>

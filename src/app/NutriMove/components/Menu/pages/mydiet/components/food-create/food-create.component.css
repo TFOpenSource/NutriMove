@@ -1,0 +1,54 @@
+.food-form-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.food-form-card h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-color: #2c7a7b;
+}
+
+.mat-label {
+  color: #2c7a7b;
+}
+
+.mat-input-element {
+  border-radius: 5px;
+}
+
+button[mat-flat-button] {
+  background-color: #2c7a7b !important;
+  color: white !important;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button[mat-button] {
+  color: #e53e3e !important;
+  margin-left: 10px;
+}
+
+button[mat-flat-button]:hover {
+  background-color: #285e61 !important;
+}

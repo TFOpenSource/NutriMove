@@ -8,7 +8,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class FoodService extends BaseService<Food>{
 
-  constructor(http: HttpClient) {
-    super(http);
+  constructor(HTTP: HttpClient) {
+    super(HTTP);
+    this.resourceEndPoint = '/food';
   }
 }
