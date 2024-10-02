@@ -46,4 +46,5 @@ export class FoodCreateComponent {
     this.foodForm.reset();
     this.cancelRequested.emit();
   }
+
 }

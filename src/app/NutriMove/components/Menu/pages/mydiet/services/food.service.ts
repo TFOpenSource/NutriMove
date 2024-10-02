@@ -11,5 +11,6 @@ export class FoodService extends BaseService<Food>{
   constructor(HTTP: HttpClient) {
     super(HTTP);
     this.resourceEndPoint = '/food';
+
   }
 }

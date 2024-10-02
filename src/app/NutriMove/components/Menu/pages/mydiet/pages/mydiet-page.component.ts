@@ -87,35 +87,7 @@ export class MydietPageComponent  implements OnInit, AfterViewInit{
     this.dataSource.sort = this.sort;
   }
 
-  protected onEditItem(item: Food) {
-    this.editMode = true;
-    this.foodData = item;
-  }
-  protected resetEditState():void {
-    this.foodData = new Food({});
-    this.editMode = false;
-  }
 
-  protected onCancelRequested():void {
-    this.resetEditState();
-    this.getAllFoods();
-  }
-
-  protected onDeleteItem(item: Food) {
-    this.deleteFood(item.id);
-  }
-
-  protected onFoodUpdateRequested(item: Food) {
-    this.foodData = item;
-    this.updateFood();
-    this.resetEditState();
-  }
-
-  protected onFoodAddRequested(item: Food) {
-    this.foodData = item;
-    this.createFood();
-    this.resetEditState();
-  }
   protected toggleCreateForm(): void {
     this.showCreateForm = !this.showCreateForm;
   }
@@ -141,14 +113,6 @@ export class MydietPageComponent  implements OnInit, AfterViewInit{
       this.dataSource.sort = this.sort;
       this.calculateTotalStats();
 
-    });
-  }
-
-  private createFood() {
-    this.foodService.create('food', this.foodData).subscribe((response: Food) => {
-      this.dataSource.data.push(response);
-      this.dataSource.data = [...this.dataSource.data];
-      this.calculateTotalStats();
     });
   }
 
@@ -182,5 +146,6 @@ export class MydietPageComponent  implements OnInit, AfterViewInit{
     });
 
   }
+
   //#end region
 }
