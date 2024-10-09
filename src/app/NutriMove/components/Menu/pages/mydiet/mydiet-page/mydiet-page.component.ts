@@ -1,76 +1,86 @@
-import {Component, inject, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from "@angular/material/paginator";
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Food} from "../model/food.entity";
+import {FormBuilder, FormsModule, NgForm} from "@angular/forms";
+import {MatFormField} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatButton} from "@angular/material/button";
+import {ToolbarComponent} from "../../../../../../public/toolbar/toolbar.component";
 import {
   MatCell,
   MatCellDef,
   MatColumnDef,
   MatHeaderCell,
   MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
-  MatTable, MatTableDataSource
+  MatHeaderRow,
+  MatTable
 } from "@angular/material/table";
-import {MatSort, MatSortHeader} from "@angular/material/sort";
-import {NgClass} from "@angular/common";
+import {MatPaginator} from "@angular/material/paginator";
 import {MatCard, MatCardContent} from "@angular/material/card";
-import {Food} from "../model/food.entity";
-import {FoodService} from "../services/food.service";
-import {MatButton} from "@angular/material/button";
-import {ToolbarComponent} from "../../../../../../public/toolbar/toolbar.component";
+import {MatSortHeader} from "@angular/material/sort";
 import {RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-mydiet-page',
   standalone: true,
   imports: [
-    MatPaginator,
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatSortHeader,
-    MatSort,
-    MatCell,
-    MatHeaderCellDef,
-    MatCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatRowDef,
-    NgClass,
-    MatCard,
-    MatCardContent,
-    MatRow,
+    FormsModule,
+    MatFormField,
+    MatInput,
     MatButton,
     ToolbarComponent,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatPaginator,
+    MatCard,
+    MatCardContent,
+    MatColumnDef,
+    MatTable,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatSortHeader,
     RouterOutlet
   ],
   templateUrl: './mydiet-page.component.html',
   styleUrl: './mydiet-page.component.css'
 })
-export class MydietPageComponent  implements OnInit{
-  dataSource: MatTableDataSource<Food> = new MatTableDataSource<Food>();
-  columnsToDisplay: string[] = ['name', 'calories', 'proteins', 'carbohydrates', 'fats'];
 
-  constructor(private foodService: FoodService) {}
+export class MydietPageComponent{
 
-  ngOnInit(): void {
-    this.loadFoods();
+  //#region Attributes
+  @Input() mydiet!: Food;
+  @Input() editMode: boolean = false;
+  @Output() protected mydietAddRequested = new EventEmitter<Food>();
+  @Output() protected mydietUpdateRequested = new EventEmitter<Food>();
+  @Output() protected cancelRequested = new EventEmitter<void>();
+  @ViewChild('mydietForm', { static: false }) protected mydietForm!: NgForm;
+
+  constructor() {
+    this.mydiet = new Food({});
   }
 
-  loadFoods(): void {
-    this.foodService.getAll('food').subscribe({
-      next: (foods: Food[]) => {
-        this.dataSource.data = foods;
-      },
-      error: (error) => {
-        console.error('Error fetching food data:', error);
-      }
-    });
-
-
+  private resetEditState() {
+    this.mydiet = new Food({});
+    this.editMode = false;
+    this.mydietForm.reset();
   }
 
-  addFood(): void {
-    console.log("Agregar Alimento clicked");
+  protected  onCancel() {
+    this.cancelRequested.emit();
+    this.resetEditState()
   }
 
+  private  isValid = () => this.mydietForm.valid;
+  protected isEditMode = (): boolean => this.editMode;
+
+  protected onSubmit() {
+    if (this.isValid()) {
+      let emitter = this.isEditMode() ? this.mydietUpdateRequested : this.mydietAddRequested;
+      emitter.emit(this.mydiet);
+      this.resetEditState();
+    } else {
+      console.error('Invalid from data');
+    }
+  }
 
 }

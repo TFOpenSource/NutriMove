@@ -11,16 +11,12 @@ export class BaseService<T> {
 
   protected basePath: string = `${environment.serverBasePath}`;
 
-  protected resourceEndPoint: string = '/resources';
+  resourceEndPoint: string = '/resources';
 
   protected resourcePath(): string {
     return `${this.basePath}${this.resourceEndPoint}`;
   }
-  constructor(private http: HttpClient) {}
-
-  getAll2(): Observable<T[]> {
-    return this.http.get<T[]>(this.resourcePath());  // Usar resourcePath en lugar de pasar el endpoint
-  }
+  constructor(protected  http: HttpClient) {}
 
   getAll(endpoint: string): Observable<T[]> {
     return this.http.get<T[]>(`${this.apiUrl}/${endpoint}`);
